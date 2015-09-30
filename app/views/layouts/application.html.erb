@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Back</title>
+  <title>災情支援網</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container">
+  <div class="row">
+    <%if flash[:notice].present?%>
+      <br/>
+      <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
+    <%end%>
+    <%if flash[:alert].present?%>
+      <br/>
+      <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
+    <%end%>
+    <%= yield %>
+  </div>
+</div>
 
-<%= yield %>
 
 </body>
 </html>

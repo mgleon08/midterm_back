@@ -1,0 +1,31 @@
+<h1><%=@disaster.title%></h1>
+
+
+詳細內容
+<h2> <%=@disaster.content%></h2>
+
+
+</table>
+
+<br>
+<br>
+
+<h1>留言</h1>
+<table class="table table-striped">
+  <tr>
+    <td> 留言內容 </td>
+    <td> 發布時間 </td>
+    <td> 刪除 </td>
+  </tr>
+
+<%@disaster.disaster_comments.each do |c|%>
+
+  <tr>
+    <td> <%=c.comment%> </td>
+    <td> <%=c.created_at%> </td>
+    <td> <%=link_to "刪除", disaster_comment_path(@disaster,c), :method => :delete, :class => "btn btn-danger"%> </td>
+  </tr>
+<%end%>
+</table>
+<%=link_to "新增留言", new_disaster_comment_path(@disaster), :class => "btn btn-primary"%>
+<%=link_to "回首頁", disasters_path, :class => "btn btn-primary"%>

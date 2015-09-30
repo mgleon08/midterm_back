@@ -1,0 +1,11 @@
+<h1>填寫新資訊</h1>
+
+<%=form_for @disaster, :url => disasters_path do |d|%>
+<%=d.label :title, "標題"%>
+<%=d.text_field :title, :class => "form-control"%>
+<%=d.collection_select(:category_id, Category.all, :id, :name)%>
+<%=d.label :content, "內文"%>
+<%=d.text_area :content, :class => "form-control"%>
+<br>
+<%=d.submit "送出", :class => "btn btn-primary"%>
+<%end%>

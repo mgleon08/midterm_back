@@ -1,0 +1,8 @@
+<h1>新增留言</h1>
+
+<%=form_for @comment, :url => disaster_comments_path(@disaster) do |d|%>
+<%=d.label :comment, "留言內容"%>
+<%=d.text_area :comment, :class => "form-control"%>
+<br>
+<%=d.submit "送出", :class => "btn btn-primary"%>
+<%end%>

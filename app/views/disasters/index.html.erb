@@ -1,0 +1,27 @@
+<h1>災情支援網</h1>
+<%=link_to "新增情報", new_disaster_path, :class => "btn btn-primary"%>
+<br>
+<%=paginate @disasters, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm"%>
+<table class="table table-striped">
+
+<tr>
+  <td>標題</td>
+  <td>分類</td>
+  <td>詳細內容</td>
+  <td>張貼時間</td>
+  <td>編輯</td>
+  <td>刪除</td>
+</tr>
+
+<%@disasters.each do |d|%>
+  <tr>
+    <td> <%=d.title%> </td>
+    <td> <%=d.category.name%> </td>
+    <td> <%=link_to "詳細內容", disaster_path(d), :class => "btn btn-primary"%> </td>
+    <td> <%=d.created_at%> </td></td>
+    <td> <%=link_to "編輯", edit_disaster_path(d), :class => "btn btn-primary"%> </td>
+    <td> <%=link_to "刪除", disaster_path(d), :method => :delete, :class => "btn btn-danger"%> </td>
+  </tr>
+<%end%>
+
+</table>
